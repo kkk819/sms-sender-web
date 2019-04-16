@@ -1,6 +1,6 @@
 {
   "dbPath": "./db/user.sqlite",
-  "port": 5899,
+  "port": 8080,
   "account": "lanwan",
   "password": "lanwan186",
   "accountSid": "AC7a15bfce5e96f71226db303afd144a47",
