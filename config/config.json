@@ -1,0 +1,9 @@
+{
+  "dbPath": "./db/user.sqlite",
+  "port": 5899,
+  "account": "lanwan",
+  "password": "lanwan186",
+  "accountSid": "AC7a15bfce5e96f71226db303afd144a47",
+  "authToken": "5360d52d660b11d8f2a89c4cb306741f",
+  "fromTel": "+19032573479"
+}

@@ -1,0 +1,22 @@
+doctype html
+html
+    head
+        title 出错了
+        link(rel='stylesheet', href='/layui/css/layui.css')
+    body
+        div.layui-container
+            div.layui-row
+                div.layui-col-md11                    
+                    table.layui-table
+                        tr
+                            td(height="30" width="50%" align="right") 错误码:
+                            td(height="30" align="left")
+                                label(class="layui-form-label") #{data.code}                                
+                        tr
+                            td(height="30" align="right") 错误信息:
+                            td(height="30" align="left") #{data.msg}                                                               
+                        tr
+                            td(height="30" align="center" colspan="2") 
+                                a(href="send") 返回
+
+                

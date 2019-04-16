@@ -1,0 +1,46 @@
+doctype html
+html
+    head
+        title 登录
+        link(rel='stylesheet', href='/layui/css/layui.css')
+        script(src='/layui/layui.js')        
+        script(type='text/javascript').
+            //Demo
+            layui.use('form', function(){
+                var form = layui.form;                
+                //监听提交
+                form.on('submit(formDemo)', function(data){                    
+                    return true;
+                });
+            });
+    body
+        div.layui-container
+            div.layui-row
+                div.layui-col-md5                   
+                    //- table.layui-table
+                    //-     tr
+                    //-         td(height="30" width="50%" align="right") 帐号:
+                    //-         td(height="30" align="left")
+                    //-             input(type="text" id='txtAccount' class="layui-input")                                                               
+                    //-     tr
+                    //-         td(height="30" align="right") 密码:
+                    //-         td(height="30" align="left") 
+                    //-             input(type="password" id='txtPass' class="layui-input")   
+                    //-     tr
+                    //-         td(height="30" align="center" colspan="2") 
+                    //-             input(type="button" value="登录" class="layui-btn" onclick="onLogin('#{data.account}', '#{data.password}')")
+                    hr
+                    form(class="layui-form" action="login" method="post")
+                        div(class="layui-form-item")
+                            label(class="layui-form-label") 帐号：
+                            div(class="layui-input-block")
+                                input(name='txtAccount' required class="layui-input")
+                        div(class="layui-form-item")
+                            label(class="layui-form-label") 密码：
+                            div(class="layui-input-block")
+                                input(type="password" name='txtPass' required class="layui-input")                        
+                        div(class="layui-form-item")                            
+                            div(class="layui-input-block")
+                                button(class="layui-btn" lay-submit lay-filter="formDemo") 登录
+
+                

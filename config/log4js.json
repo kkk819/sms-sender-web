@@ -1,0 +1,33 @@
+{
+  "appenders": {
+    "runningLogs": {
+      "type": "file",
+      "filename": "../logs/running.log"
+    },
+    "console": {
+      "type": "console"
+    },
+    "adminLogs": {
+      "type": "file",
+      "filename": "../logs/admin.log"
+    }
+  },
+  "categories": {
+    "console": {
+      "appenders": ["console"],
+      "level": "info"
+    },
+    "running": {
+      "appenders": ["runningLogs", "console"],
+      "level": "debug"
+    },
+    "default": {
+      "appenders": ["console"],
+      "level": "all"
+    },
+    "admin": {
+      "appenders": ["console", "adminLogs"],
+      "level": "debug"
+    }
+  }
+}

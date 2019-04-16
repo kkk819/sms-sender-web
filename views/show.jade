@@ -1,0 +1,35 @@
+doctype html
+html
+    head
+        title 发送结果
+        link(rel='stylesheet', href='/layui/css/layui.css')
+        script(src='/layui/layui.js')        
+    body
+        div.layui-container
+            div.layui-row
+            div                 
+                div.layui-col-md11                                       
+                    table.layui-table
+                        tr
+                            td(height="30" align="center") 
+                                a(href="send") 已发送 #{data.success.length + data.failed.length} 条短信，点此返回
+                
+                div.layui-col-md5                                       
+                    table.layui-table                        
+                        tr
+                            td(height="30" align="center") 发送成功                                                                     
+                        - for (let i = 0; i < data.success.length; i++)
+                            tr
+                                td(height="30" align="center") #{data.success[i]}
+                
+                div.layui-col-md5                                       
+                    table.layui-table                        
+                        tr
+                            td(height="30" align="center") 发送失败                                                                    
+                        - for (let i = 0; i < data.failed.length; i++)
+                            tr
+                                td(height="30" align="center") #{data.failed[i]}
+                    
+                                                
+
+                

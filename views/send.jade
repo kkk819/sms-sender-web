@@ -1,0 +1,61 @@
+doctype html
+html
+    head
+        title 短信群发
+        link(rel='stylesheet', href='/layui/css/layui.css')
+        script(src='/layui/layui.js')        
+        script(type='text/javascript').
+            //Demo
+            layui.use('form', function(){
+                var form = layui.form;                
+                
+                //监听提交
+                form.on('submit(formDemo)', function(data){
+                    document.getElementById('btnSubmit').style.display = "none";
+                    layer.msg("正在发送，请不要重复提交");                    
+                    return true;
+                });
+            });
+    body
+        div.layui-container
+            div.layui-row
+                div.layui-col-md11                    
+                    //- table.layui-table
+                    //-     tr
+                    //-         td(height="30" width="50%" align="right") 发送号码:
+                    //-         td(height="30" align="left")
+                    //-             label(class="layui-form-label") #{data.fromTel}
+                    //-             //- input(type="text" id='txtFrom' class="layui-input" value="#{data.fromTel}")                                                               
+                    //-     tr
+                    //-         td(height="30" align="right") 发送内容:
+                    //-         td(height="30" align="left") 
+                    //-             textarea(id='txtBody' class="layui-textarea")                                 
+                    //-     tr
+                    //-         td(height="30" align="right") 接收号码:
+                    //-         td(height="30" align="left") 多个号码之间以英文逗号分隔，号码前要加上国家代码，比如：中国+86 
+                    //-             textarea(id='txtTo' class="layui-textarea")                                 
+                    //-     tr
+                    //-         td(height="30" align="center" colspan="2") 
+                    //-             input(type="button" value="发送" onclick="onSend()" class="layui-btn")    
+
+                    form(class="layui-form" action="show" method="post")
+                        div(class="layui-form-item")
+                            label(class="layui-form-label") 发送号码：
+                            div(class="layui-input-block")
+                                label(class="layui-form-label") #{data.fromTel}
+                        div(class="layui-form-item")
+                            label(class="layui-form-label") 发送内容：
+                            div(class="layui-input-block")
+                                font(color="#FF0000") 提示：发送内容如果有类似“赌博”、“习近平”、“群发”等等敏感字，会显示发送成功但实际收不到短信的情况！！！
+                                textarea(name='txtBody' required class="layui-textarea")
+                        div(class="layui-form-item")
+                            label(class="layui-form-label") 接收号码：
+                            div(class="layui-input-block")
+                                font(color="#FF0000") 单个号码格式：号码前要加上国家代码，比如：中国+86，示例：+8613355558888
+                                br
+                                font(color="#FF0000") 多个号码格式：多个号码之间以英文逗号“,”分隔，示例：+8613355558888,+8613966669999                                
+                                    textarea(name='txtTo' required class="layui-textarea")
+
+                        div(class="layui-form-item")                            
+                            div(class="layui-input-block")
+                                button(class="layui-btn" lay-submit lay-filter="formDemo" id="btnSubmit") 立即发送
