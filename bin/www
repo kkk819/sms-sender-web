@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-let app = require('../app');
+let app = require('../server');
 let debug = require('debug')('sms-sender-web');
 let http = require('http');
 let config = require('../config/config.json');
