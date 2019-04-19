@@ -3,7 +3,14 @@ html
     head
         title 发送结果
         link(rel='stylesheet', href='/layui/css/layui.css')
-        script(src='/layui/layui.js')        
+        script(src='/layui/layui.js')
+        script(src='/export.js')        
+        script(type='text/javascript').
+            layui.config({
+                base: 'layui_exts/'
+            }).extend({
+                excel: 'excel'
+            });	    
     body
         div.layui-container
             div.layui-row
@@ -12,23 +19,29 @@ html
                     table.layui-table
                         tr
                             td(height="30" align="center") 
-                                a(href="send") 已发送 #{data.success.length + data.failed.length} 条短信，点此返回
+                                a(href="send") 已发送 #{data.successList.length + data.failedList.length} 条短信，点此返回
+                    table.layui-table
+                        tr
+                            td(height="30" align="center")
+                                button(class="layui-btn layui-btn-primary" onclick="exportJsonData('#{JSON.stringify(data)}')") 导出数据                                
+                                //- button(class="layui-btn layui-btn-primary" onclick="exportJsonData(#{data})") 导出数据                                
+                div.layui-col-md5                                       
+                    table.layui-table                        
+                        tr
+                            td(height="30" align="center") 发送成功(#{data.successList.length}条)                                                                     
+                        - for (let i = 0; i < data.successList.length; i++)
+                            tr
+                                td(height="30" align="center") #{data.successList[i].success}
                 
                 div.layui-col-md5                                       
                     table.layui-table                        
                         tr
-                            td(height="30" align="center") 发送成功                                                                     
-                        - for (let i = 0; i < data.success.length; i++)
+                            td(height="30" align="center")
+                                font(color="#FF0000") 发送失败(#{data.failedList.length}条)                                                                    
+                        - for (let i = 0; i < data.failedList.length; i++)
                             tr
-                                td(height="30" align="center") #{data.success[i]}
-                
-                div.layui-col-md5                                       
-                    table.layui-table                        
-                        tr
-                            td(height="30" align="center") 发送失败                                                                    
-                        - for (let i = 0; i < data.failed.length; i++)
-                            tr
-                                td(height="30" align="center") #{data.failed[i]}
+                                td(height="30" align="center") 
+                                    font(color="#FF0000") #{data.failedList[i].failed}
                     
                                                 
 
